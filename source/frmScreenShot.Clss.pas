@@ -1,19 +1,20 @@
 unit frmScreenShot.Clss;
 
+// Monitum Projet, 2021.
+// Marcus Vinicius Braga, all rights reserved.
+
 interface
 
 uses
   uComponentsManager,
   FMX.Objects, FMX.Layouts, System.Classes, FMX.Types, FMX.Controls,
-  FMX.Forms;
+  FMX.Forms, uComponentsTypes;
 
 type
   TFormScreenshot = class(TForm)
     LayoutMain: TLayout;
     SlaveRect: TRectangle;
     ImageScreenshot: TImage;
-    Rectangle1: TRectangle;
-    Rectangle2: TRectangle;
     procedure FormCreate(Sender: TObject);
     procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
     procedure FormDestroy(Sender: TObject);
@@ -22,6 +23,8 @@ type
     FActiveMoveControls: Boolean;
     procedure SetActiveMoveControls(const Value: Boolean);
   protected
+  public
+    procedure CreateRectangle(const AShape: IShape);
   public
     property ActiveMoveControls: Boolean read FActiveMoveControls write SetActiveMoveControls;
   end;
@@ -34,9 +37,19 @@ implementation
 uses
   System.UITypes,
   uScreenShot.Clss,
-  uComponentsManager.Clss;
+  uComponentsManager.Clss, uComponentsFactory.Clss;
 
 {$R *.fmx}
+
+procedure TFormScreenshot.CreateRectangle(const AShape: IShape);
+begin
+  FComponentsManager.Deactivate;
+  try
+    TComponentsFactory.New(LayoutMain).CreateRectangle(AShape);
+  finally
+    FComponentsManager.Activate;
+  end;
+end;
 
 procedure TFormScreenshot.FormCreate(Sender: TObject);
 begin

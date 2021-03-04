@@ -1,5 +1,8 @@
 unit uComponentsManager;
 
+// Monitum Projet, 2021.
+// Marcus Vinicius Braga, all rights reserved.
+
 interface
 
 type

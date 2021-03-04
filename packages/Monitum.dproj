@@ -146,6 +146,10 @@
             <Form>FormScreenshot</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="..\source\uComponentsFactory.pas"/>
+        <DCCReference Include="..\source\uComponentsFactory.Clss.pas"/>
+        <DCCReference Include="..\source\uComponentsTypes.pas"/>
+        <DCCReference Include="..\source\uComponentsTypes.Clss.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

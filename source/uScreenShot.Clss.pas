@@ -1,10 +1,7 @@
 unit uScreenShot.Clss;
 
-{ =====================================================================
-   How to use:
-     TScreenShot.New(YourBitmapObject).Execute;
-     TScreenShot.New.Execute.Bitmap;
-  ====================================================================== }
+// Monitum Projet, 2021.
+// Marcus Vinicius Braga, all rights reserved.
 
 interface
 

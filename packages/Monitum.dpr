@@ -8,7 +8,11 @@ uses
   uScreenShot in '..\source\uScreenShot.pas',
   uComponentsManager.Clss in '..\source\uComponentsManager.Clss.pas',
   uComponentsManager in '..\source\uComponentsManager.pas',
-  frmScreenShot.Clss in '..\source\frmScreenShot.Clss.pas' {FormScreenshot};
+  frmScreenShot.Clss in '..\source\frmScreenShot.Clss.pas' {FormScreenshot},
+  uComponentsFactory in '..\source\uComponentsFactory.pas',
+  uComponentsFactory.Clss in '..\source\uComponentsFactory.Clss.pas',
+  uComponentsTypes in '..\source\uComponentsTypes.pas',
+  uComponentsTypes.Clss in '..\source\uComponentsTypes.Clss.pas';
 
 {$R *.res}
 

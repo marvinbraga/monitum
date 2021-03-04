@@ -1,32 +1,85 @@
 object FormStart: TFormStart
   Left = 0
   Top = 0
+  BorderStyle = ToolWindow
   Caption = 'Monitum'
-  ClientHeight = 87
-  ClientWidth = 640
+  ClientHeight = 523
+  ClientWidth = 96
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   DesignerMasterStyle = 0
-  object ButtonStart: TButton
-    Position.X = 16.000000000000000000
-    Position.Y = 8.000000000000000000
-    TabOrder = 0
-    Text = 'Iniciar'
-    OnClick = ButtonStartClick
-  end
-  object ButtonFinish: TButton
-    Position.X = 104.000000000000000000
-    Position.Y = 8.000000000000000000
+  object LayoutMain: TLayout
+    Align = Client
+    Size.Width = 96.000000000000000000
+    Size.Height = 523.000000000000000000
+    Size.PlatformDefault = False
     TabOrder = 1
-    Text = 'Terminar'
-    OnClick = ButtonFinishClick
-  end
-  object ButtonTravar: TButton
-    Position.X = 192.000000000000000000
-    Position.Y = 8.000000000000000000
-    TabOrder = 3
-    Text = 'Travar'
-    OnClick = ButtonTravarClick
+    object RectTools: TRectangle
+      Align = Client
+      Fill.Kind = None
+      Padding.Left = 4.000000000000000000
+      Padding.Right = 4.000000000000000000
+      Size.Width = 96.000000000000000000
+      Size.Height = 523.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Kind = None
+      object ButtonStart: TButton
+        Align = Top
+        Margins.Top = 4.000000000000000000
+        Position.X = 4.000000000000000000
+        Position.Y = 4.000000000000000000
+        Size.Width = 88.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'Iniciar'
+        OnClick = ButtonStartClick
+      end
+      object ButtonTravar: TButton
+        Align = Top
+        Margins.Top = 4.000000000000000000
+        Position.X = 4.000000000000000000
+        Position.Y = 30.000000000000000000
+        Size.Width = 88.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = 'Travar'
+        OnClick = ButtonTravarClick
+      end
+      object ButtonColor: TComboColorBox
+        Align = Top
+        Color = x6409F009
+        Margins.Top = 4.000000000000000000
+        Position.X = 4.000000000000000000
+        Position.Y = 56.000000000000000000
+        Size.Width = 88.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+      end
+      object PanelComponents: TPanel
+        Align = Client
+        Padding.Left = 4.000000000000000000
+        Padding.Right = 4.000000000000000000
+        Margins.Top = 4.000000000000000000
+        Margins.Bottom = 4.000000000000000000
+        Size.Width = 88.000000000000000000
+        Size.Height = 437.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 3
+        object ButtonCreateRect: TRectangle
+          Align = Top
+          Margins.Top = 4.000000000000000000
+          Position.X = 4.000000000000000000
+          Position.Y = 4.000000000000000000
+          Size.Width = 80.000000000000000000
+          Size.Height = 29.000000000000000000
+          Size.PlatformDefault = False
+          OnClick = ButtonCreateRectClick
+        end
+      end
+    end
   end
 end
