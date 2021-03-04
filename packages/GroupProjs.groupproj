@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{71FA954D-0EAB-4895-9A46-87FDABF75D06}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Monitum.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Monitum">
+        <MSBuild Projects="Monitum.dproj"/>
+    </Target>
+    <Target Name="Monitum:Clean">
+        <MSBuild Projects="Monitum.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Monitum:Make">
+        <MSBuild Projects="Monitum.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Monitum"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Monitum:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Monitum:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

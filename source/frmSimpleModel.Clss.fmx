@@ -1,0 +1,36 @@
+object FormSimpleModel: TFormSimpleModel
+  Left = 0
+  Top = 0
+  Caption = 'Modelo Simples'
+  ClientHeight = 138
+  ClientWidth = 319
+  Fill.Color = x644EE543
+  Fill.Kind = Solid
+  Transparency = True
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  OnMouseDown = FormMouseDown
+  OnMouseMove = FormMouseMove
+  OnMouseUp = FormMouseUp
+  DesignerMasterStyle = 0
+  object Label1: TLabel
+    Position.X = 24.000000000000000000
+    Position.Y = 40.000000000000000000
+    Size.Width = 273.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Label1'
+    TabOrder = 1
+  end
+  object Label2: TLabel
+    Position.X = 24.000000000000000000
+    Position.Y = 64.000000000000000000
+    Size.Width = 281.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Label1'
+    TabOrder = 0
+  end
+end
