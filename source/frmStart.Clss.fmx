@@ -5,6 +5,7 @@ object FormStart: TFormStart
   Caption = 'Monitum'
   ClientHeight = 523
   ClientWidth = 96
+  FormStyle = StayOnTop
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]

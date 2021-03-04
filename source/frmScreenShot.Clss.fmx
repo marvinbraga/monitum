@@ -6,7 +6,6 @@ object FormScreenshot: TFormScreenshot
   ClientHeight = 480
   ClientWidth = 640
   Position = Designed
-  FormStyle = StayOnTop
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]

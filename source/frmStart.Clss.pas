@@ -6,10 +6,22 @@ unit frmStart.Clss;
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
-  FMX.Controls.Presentation, FMX.StdCtrls, frmScreenShot.Clss, FMX.Layouts,
-  FMX.Objects, FMX.Colors;
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
+  System.Variants,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Graphics,
+  FMX.Dialogs,
+  FMX.Controls.Presentation,
+  FMX.StdCtrls,
+  frmScreenShot.Clss,
+  FMX.Layouts,
+  FMX.Objects,
+  FMX.Colors;
 
 type
   TFormStart = class(TForm)
@@ -46,18 +58,21 @@ begin
   FFormScreenshot.CreateRectangle(
     TShape.New(
       TFill.New(ButtonColor.Color),
-      TStroke.New(TAlphaColors.Black, TStrokeDash.Solid, TBrushKind.None, 1)
-    )
-  );
+      TStroke.New(TAlphaColors.Black, TStrokeDash.Solid, TBrushKind.None, 1)));
 end;
 
 procedure TFormStart.ButtonStartClick(Sender: TObject);
 begin
   if not Assigned(FFormScreenshot) then
   begin
-    FFormScreenshot := TFormScreenshot.Create(nil);
-    FFormScreenshot.Show;
-    ButtonStart.Text := 'Terminar';
+    Self.Visible := False;
+    try
+      FFormScreenshot := TFormScreenshot.Create(nil);
+      FFormScreenshot.Show;
+      ButtonStart.Text := 'Terminar';
+    finally
+      Self.Visible := True;
+    end;
   end
   else
   begin
@@ -79,3 +94,4 @@ begin
 end;
 
 end.
+
