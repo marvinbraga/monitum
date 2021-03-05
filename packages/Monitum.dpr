@@ -12,7 +12,10 @@ uses
   uComponentsFactory in '..\source\uComponentsFactory.pas',
   uComponentsFactory.Clss in '..\source\uComponentsFactory.Clss.pas',
   uComponentsTypes in '..\source\uComponentsTypes.pas',
-  uComponentsTypes.Clss in '..\source\uComponentsTypes.Clss.pas';
+  uComponentsTypes.Clss in '..\source\uComponentsTypes.Clss.pas',
+  Marvin.UI.ToastMessage.Clss in '..\source\Marvin.UI.ToastMessage.Clss.pas',
+  Marvin.UI.ToastMessage.Frame in '..\source\Marvin.UI.ToastMessage.Frame.pas' {FrameToast: TFrame},
+  Marvin.UI.ToastMessage in '..\source\Marvin.UI.ToastMessage.pas';
 
 {$R *.res}
 

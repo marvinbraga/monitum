@@ -150,6 +150,13 @@
         <DCCReference Include="..\source\uComponentsFactory.Clss.pas"/>
         <DCCReference Include="..\source\uComponentsTypes.pas"/>
         <DCCReference Include="..\source\uComponentsTypes.Clss.pas"/>
+        <DCCReference Include="..\source\Marvin.UI.ToastMessage.Clss.pas"/>
+        <DCCReference Include="..\source\Marvin.UI.ToastMessage.Frame.pas">
+            <Form>FrameToast</Form>
+            <FormType>fmx</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\source\Marvin.UI.ToastMessage.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

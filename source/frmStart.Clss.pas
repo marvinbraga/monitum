@@ -32,9 +32,11 @@ type
     ButtonColor: TComboColorBox;
     PanelComponents: TPanel;
     ButtonCreateRect: TRectangle;
+    Rectangle1: TRectangle;
     procedure ButtonStartClick(Sender: TObject);
     procedure ButtonTravarClick(Sender: TObject);
     procedure ButtonCreateRectClick(Sender: TObject);
+    procedure Rectangle1Click(Sender: TObject);
   private
     FFormScreenshot: TFormScreenshot;
   public
@@ -91,6 +93,14 @@ begin
     ButtonTravar.Text := 'Travar'
   else
     ButtonTravar.Text := 'Destravar';
+end;
+
+procedure TFormStart.Rectangle1Click(Sender: TObject);
+begin
+  if not Assigned(FFormScreenshot) then
+    Exit;
+
+  FFormScreenshot.ToastMessageShow('Aqui está a mensagem.');
 end;
 
 end.

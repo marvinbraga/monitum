@@ -7,8 +7,14 @@ interface
 
 uses
   uComponentsManager,
-  FMX.Objects, FMX.Layouts, System.Classes, FMX.Types, FMX.Controls,
-  FMX.Forms, uComponentsTypes;
+  Marvin.UI.ToastMessage,
+  FMX.Objects,
+  FMX.Layouts,
+  System.Classes,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  uComponentsTypes;
 
 type
   TFormScreenshot = class(TForm)
@@ -21,9 +27,11 @@ type
   private
     FComponentsManager: IComponentsManager;
     FActiveMoveControls: Boolean;
+    FToast: IToast;
     procedure SetActiveMoveControls(const Value: Boolean);
   protected
   public
+    procedure ToastMessageShow(const AMessage: string; const ATextAction: string = '');
     procedure CreateRectangle(const AShape: IShape);
   public
     property ActiveMoveControls: Boolean read FActiveMoveControls write SetActiveMoveControls;
@@ -36,8 +44,10 @@ implementation
 
 uses
   System.UITypes,
+  Marvin.UI.ToastMessage.Clss,
   uScreenShot.Clss,
-  uComponentsManager.Clss, uComponentsFactory.Clss;
+  uComponentsManager.Clss,
+  uComponentsFactory.Clss;
 
 {$R *.fmx}
 
@@ -63,6 +73,7 @@ end;
 procedure TFormScreenshot.FormDestroy(Sender: TObject);
 begin
   FComponentsManager := nil;
+  FToast := nil;
 end;
 
 procedure TFormScreenshot.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
@@ -78,11 +89,19 @@ begin
   FActiveMoveControls := Value;
   if FActiveMoveControls <> FComponentsManager.IsActivated then
   begin
+    FToast := nil;
     if FActiveMoveControls then
       FComponentsManager.Activate
     else
       FComponentsManager.Deactivate;
   end;
+end;
+
+procedure TFormScreenshot.ToastMessageShow(const AMessage, ATextAction: string);
+begin
+  if Assigned(FToast) then
+    FToast := nil;
+  FToast := TToast.New(LayoutMain, AMessage, ATextAction).Show;
 end;
 
 end.

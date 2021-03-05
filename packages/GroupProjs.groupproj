@@ -1,9 +1,12 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{71FA954D-0EAB-4895-9A46-87FDABF75D06}</ProjectGuid>
+        <ProjectGuid>{5D272A7A-75F7-4FBA-8212-A17007CCFB85}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
         <Projects Include="Monitum.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="E:\_TEMP\Anos Anteriores\_CURSO DESIGN DE INTERFACES\Aula 06\WorkArea\Aula06.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -23,14 +26,23 @@
     <Target Name="Monitum:Make">
         <MSBuild Projects="Monitum.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Aula06">
+        <MSBuild Projects="E:\_TEMP\Anos Anteriores\_CURSO DESIGN DE INTERFACES\Aula 06\WorkArea\Aula06.dproj"/>
+    </Target>
+    <Target Name="Aula06:Clean">
+        <MSBuild Projects="E:\_TEMP\Anos Anteriores\_CURSO DESIGN DE INTERFACES\Aula 06\WorkArea\Aula06.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Aula06:Make">
+        <MSBuild Projects="E:\_TEMP\Anos Anteriores\_CURSO DESIGN DE INTERFACES\Aula 06\WorkArea\Aula06.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Monitum"/>
+        <CallTarget Targets="Monitum;Aula06"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Monitum:Clean"/>
+        <CallTarget Targets="Monitum:Clean;Aula06:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Monitum:Make"/>
+        <CallTarget Targets="Monitum:Make;Aula06:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

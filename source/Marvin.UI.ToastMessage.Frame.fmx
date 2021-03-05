@@ -1,0 +1,64 @@
+object FrameToast: TFrameToast
+  Size.Width = 470.000000000000000000
+  Size.Height = 54.000000000000000000
+  Size.PlatformDefault = False
+  object Layout: TLayout
+    Align = Contents
+    Size.Width = 470.000000000000000000
+    Size.Height = 54.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object RectToast: TRoundRect
+      Align = Client
+      Corners = []
+      Fill.Color = xFF333333
+      HitTest = False
+      Padding.Left = 24.000000000000000000
+      Padding.Right = 5.000000000000000000
+      Size.Width = 470.000000000000000000
+      Size.Height = 54.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Kind = None
+      object TXT_Acao: TText
+        Align = Right
+        Position.X = 379.000000000000000000
+        Size.Width = 86.000000000000000000
+        Size.Height = 54.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'A'#199#195'O'
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.FontColor = xFFEEFF41
+        object FloatAnimationAcao: TFloatAnimation
+          Duration = 1.000000000000000000
+          PropertyName = 'Opacity'
+          StartValue = 0.000000000000000000
+          StopValue = 1.000000000000000000
+        end
+      end
+      object TXT_Mensagem: TText
+        Align = Client
+        HitTest = False
+        Size.Width = 355.000000000000000000
+        Size.Height = 54.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Aqui vai o texto da mensagem tipo Toast.'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.FontColor = claWhite
+        TextSettings.HorzAlign = Leading
+        object FloatAnimationMensagem: TFloatAnimation
+          Duration = 1.000000000000000000
+          PropertyName = 'Opacity'
+          StartValue = 0.000000000000000000
+          StopValue = 1.000000000000000000
+        end
+      end
+      object FloatAnimationRect: TFloatAnimation
+        Duration = 0.500000000000000000
+        PropertyName = 'Position.Y'
+        StartValue = 0.000000000000000000
+        StopValue = 0.000000000000000000
+      end
+    end
+  end
+end

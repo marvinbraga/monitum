@@ -76,9 +76,19 @@ object FormStart: TFormStart
           Position.X = 4.000000000000000000
           Position.Y = 4.000000000000000000
           Size.Width = 80.000000000000000000
-          Size.Height = 29.000000000000000000
+          Size.Height = 21.000000000000000000
           Size.PlatformDefault = False
           OnClick = ButtonCreateRectClick
+        end
+        object Rectangle1: TRectangle
+          Align = Top
+          Margins.Top = 4.000000000000000000
+          Position.X = 4.000000000000000000
+          Position.Y = 29.000000000000000000
+          Size.Width = 80.000000000000000000
+          Size.Height = 21.000000000000000000
+          Size.PlatformDefault = False
+          OnClick = Rectangle1Click
         end
       end
     end
