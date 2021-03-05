@@ -71,6 +71,7 @@ begin
     try
       FFormScreenshot := TFormScreenshot.Create(nil);
       FFormScreenshot.Show;
+      FFormScreenshot.ActivateLoupe(True);
       ButtonStart.Text := 'Terminar';
     finally
       Self.Visible := True;
@@ -78,6 +79,7 @@ begin
   end
   else
   begin
+    FFormScreenshot.ActivateLoupe(False);
     FreeAndNil(FFormScreenshot);
     ButtonStart.Text := 'Iniciar';
   end;

@@ -6,7 +6,7 @@
         <Projects Include="Monitum.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="E:\_TEMP\Anos Anteriores\_CURSO DESIGN DE INTERFACES\Aula 06\WorkArea\Aula06.dproj">
+        <Projects Include="C:\Users\mvbraga\Documents\Embarcadero\Studio\Projects\Project2.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -26,23 +26,23 @@
     <Target Name="Monitum:Make">
         <MSBuild Projects="Monitum.dproj" Targets="Make"/>
     </Target>
-    <Target Name="Aula06">
-        <MSBuild Projects="E:\_TEMP\Anos Anteriores\_CURSO DESIGN DE INTERFACES\Aula 06\WorkArea\Aula06.dproj"/>
+    <Target Name="Project2">
+        <MSBuild Projects="C:\Users\mvbraga\Documents\Embarcadero\Studio\Projects\Project2.dproj"/>
     </Target>
-    <Target Name="Aula06:Clean">
-        <MSBuild Projects="E:\_TEMP\Anos Anteriores\_CURSO DESIGN DE INTERFACES\Aula 06\WorkArea\Aula06.dproj" Targets="Clean"/>
+    <Target Name="Project2:Clean">
+        <MSBuild Projects="C:\Users\mvbraga\Documents\Embarcadero\Studio\Projects\Project2.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Aula06:Make">
-        <MSBuild Projects="E:\_TEMP\Anos Anteriores\_CURSO DESIGN DE INTERFACES\Aula 06\WorkArea\Aula06.dproj" Targets="Make"/>
+    <Target Name="Project2:Make">
+        <MSBuild Projects="C:\Users\mvbraga\Documents\Embarcadero\Studio\Projects\Project2.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="Monitum;Aula06"/>
+        <CallTarget Targets="Monitum;Project2"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Monitum:Clean;Aula06:Clean"/>
+        <CallTarget Targets="Monitum:Clean;Project2:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Monitum:Make;Aula06:Make"/>
+        <CallTarget Targets="Monitum:Make;Project2:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

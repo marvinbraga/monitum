@@ -14,7 +14,7 @@ uses
   FMX.Types,
   FMX.Controls,
   FMX.Forms,
-  uComponentsTypes;
+  uComponentsTypes, uMagnifierGlass;
 
 type
   TFormScreenshot = class(TForm)
@@ -26,6 +26,7 @@ type
     procedure FormDestroy(Sender: TObject);
   private
     FComponentsManager: IComponentsManager;
+    FMagnifierGlass: IMagnifierGlassManager;
     FActiveMoveControls: Boolean;
     FToast: IToast;
     procedure SetActiveMoveControls(const Value: Boolean);
@@ -33,6 +34,7 @@ type
   public
     procedure ToastMessageShow(const AMessage: string; const ATextAction: string = '');
     procedure CreateRectangle(const AShape: IShape);
+    procedure ActivateLoupe(const AValue: Boolean);
   public
     property ActiveMoveControls: Boolean read FActiveMoveControls write SetActiveMoveControls;
   end;
@@ -47,9 +49,14 @@ uses
   Marvin.UI.ToastMessage.Clss,
   uScreenShot.Clss,
   uComponentsManager.Clss,
-  uComponentsFactory.Clss;
+  uComponentsFactory.Clss, uMagnifierGlass.Clss;
 
 {$R *.fmx}
+
+procedure TFormScreenshot.ActivateLoupe(const AValue: Boolean);
+begin
+  FMagnifierGlass.SetVisible(AValue);
+end;
 
 procedure TFormScreenshot.CreateRectangle(const AShape: IShape);
 begin
@@ -68,10 +75,12 @@ begin
   FActiveMoveControls := FComponentsManager.IsActivated;
   Self.Top := 0;
   Self.Left := 0;
+  FMagnifierGlass := TMagnifierGlassManager.New(LayoutMain, ImageScreenshot).SetVisible(True);
 end;
 
 procedure TFormScreenshot.FormDestroy(Sender: TObject);
 begin
+  FMagnifierGlass := nil;
   FComponentsManager := nil;
   FToast := nil;
 end;

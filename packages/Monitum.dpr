@@ -15,7 +15,9 @@ uses
   uComponentsTypes.Clss in '..\source\uComponentsTypes.Clss.pas',
   Marvin.UI.ToastMessage.Clss in '..\source\Marvin.UI.ToastMessage.Clss.pas',
   Marvin.UI.ToastMessage.Frame in '..\source\Marvin.UI.ToastMessage.Frame.pas' {FrameToast: TFrame},
-  Marvin.UI.ToastMessage in '..\source\Marvin.UI.ToastMessage.pas';
+  Marvin.UI.ToastMessage in '..\source\Marvin.UI.ToastMessage.pas',
+  uMagnifierGlass.Clss in '..\source\uMagnifierGlass.Clss.pas',
+  uMagnifierGlass in '..\source\uMagnifierGlass.pas';
 
 {$R *.res}
 
