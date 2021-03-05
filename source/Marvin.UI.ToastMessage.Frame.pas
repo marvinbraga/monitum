@@ -24,9 +24,9 @@ type
   TFrameToast = class(TFrame, IToastMessage)
     Layout: TLayout;
     RectToast: TRoundRect;
-    TXT_Mensagem: TText;
+    TextMensagem: TText;
     FloatAnimationMensagem: TFloatAnimation;
-    TXT_Acao: TText;
+    TextAcao: TText;
     FloatAnimationAcao: TFloatAnimation;
     FloatAnimationRect: TFloatAnimation;
   private
@@ -62,6 +62,9 @@ begin
   Self.Align := TAlignLayout.Horizontal;
   Self.Position.Y := TControl(AOwner).Height - Self.Height;
   Self.Layout.Visible := False;
+  { texto }
+  TextMensagem.Text := AMensagem;
+  TextAcao.Text := ATextoAcao;
 end;
 
 destructor TFrameToast.Destroy;

@@ -19,7 +19,7 @@ object FrameToast: TFrameToast
       Size.Height = 54.000000000000000000
       Size.PlatformDefault = False
       Stroke.Kind = None
-      object TXT_Acao: TText
+      object TextAcao: TText
         Align = Right
         Position.X = 379.000000000000000000
         Size.Width = 86.000000000000000000
@@ -36,7 +36,7 @@ object FrameToast: TFrameToast
           StopValue = 1.000000000000000000
         end
       end
-      object TXT_Mensagem: TText
+      object TextMensagem: TText
         Align = Client
         HitTest = False
         Size.Width = 355.000000000000000000
