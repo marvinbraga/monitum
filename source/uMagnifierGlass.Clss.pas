@@ -17,7 +17,7 @@ type
   private
     const
       FC_MAX_ZOOM = 10;
-      FC_MIN_ZOOM = 1;
+      FC_MIN_ZOOM = 2;
   private
     FMagnifierGlass: TMagnifierGlass;
     FZoom: Single;
@@ -27,10 +27,8 @@ type
     FTarget: TControl;
     FImage: TControl;
     FExternalTargetResize: TNotifyEvent;
-    FExternalMouseDown: TMouseEvent;
     FExternalMouseMove: TMouseMoveEvent;
     procedure TargetResize(Sender: TObject);
-    procedure TargetMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
     procedure TargetMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Single);
     procedure MagnifierGlassPainting(Sender: TObject; Canvas: TCanvas; const ARect: TRectF);
   private
@@ -75,11 +73,9 @@ begin
   FImage := AImage;
   // recupera os eventos
   FExternalTargetResize := FTarget.OnResize;
-  FExternalMouseDown := FTarget.OnMouseDown;
   FExternalMouseMove := FTarget.OnMouseMove;
   // atualiza os eventos
   FTarget.OnResize := Self.TargetResize;
-  FTarget.OnMouseDown := Self.TargetMouseDown;
   FTarget.OnMouseMove := Self.TargetMouseMove;
   // inicializa
   FIsVisible := False;
@@ -100,7 +96,6 @@ begin
   FImage.RemoveObject(FMagnifierGlass);
   FreeAndNil(FMagnifierGlass);
   FTarget.OnResize := FExternalTargetResize;
-  FTarget.OnMouseDown := FExternalMouseDown;
   FTarget.OnMouseMove := FExternalMouseMove;
   FTarget := nil;
   inherited;
@@ -196,8 +191,8 @@ begin
   FMagnifierGlass.LoupeMode := FLoupeMode;
   if FLoupeMode = TLoupeMode.Rectangle then
   begin
-    FMagnifierGlass.Height := 150;
-    FMagnifierGlass.Width := 300;
+    FMagnifierGlass.Height := 200;
+    FMagnifierGlass.Width := 400;
   end;
 end;
 
@@ -231,13 +226,6 @@ begin
   if (AValue >= FC_MIN_ZOOM) and (AValue <= FC_MAX_ZOOM) then
     FZoom := AValue;
   FMagnifierGlass.LoupeScale := FZoom;
-end;
-
-procedure TMagnifierGlassManager.TargetMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
-begin
-  Self.MousePos := PointF(X, Y);
-  if Assigned(FExternalMouseDown) then
-    FExternalMouseDown(Sender, Button, Shift, X, Y);
 end;
 
 procedure TMagnifierGlassManager.TargetMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Single);

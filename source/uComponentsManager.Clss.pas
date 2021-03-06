@@ -13,7 +13,7 @@ uses
   FMX.Types,
   System.Types,
   System.UITypes,
-  FMX.Graphics, FMX.Forms;
+  FMX.Graphics, FMX.Forms, FMX.Controls;
 
 type
   TComponentsManager = class(TInterfacedObject, IComponentsManager)
@@ -21,12 +21,14 @@ type
     FOwner: TForm;
     FLayoutMain: TLayout;
     FSlaveRect: TRectangle;
+    FImage: TControl;
   private
     FMoveMode: Integer;
     FPosD, FPosM: TPointF;
     FMoveRec: TRectF;
     FSelected: TObject;
     FIsActivated: Boolean;
+    FExternalMouseMove: TMouseMoveEvent;
   private
     procedure LayoutMainMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
     procedure LayoutMainPaint(Sender: TObject; Canvas: TCanvas; const ARect: TRectF);
@@ -42,15 +44,12 @@ type
     function Deactivate: IComponentsManager;
     function DeleteObject: IComponentsManager;
   public
-    class function New(const AOwner: TForm; const ALayoutMain: TLayout; const ASlaveRect: TRectangle): IComponentsManager; static;
-    constructor Create(const AOwner: TForm; const ALayoutMain: TLayout; const ASlaveRect: TRectangle);
+    class function New(const AOwner: TForm; const ALayoutMain: TLayout; const AImage: TControl; const ASlaveRect: TRectangle): IComponentsManager; static;
+    constructor Create(const AOwner: TForm; const ALayoutMain: TLayout; const AImage: TControl; const ASlaveRect: TRectangle);
     destructor Destroy; override;
   end;
 
 implementation
-
-uses
-  FMX.Controls;
 
 const
   FC_CHECK_POINT: array[1..8] of TPointF = ((
@@ -82,21 +81,24 @@ const
 
 { TComponentsManager }
 
-class function TComponentsManager.New(const AOwner: TForm; const ALayoutMain: TLayout; const ASlaveRect: TRectangle): IComponentsManager;
+class function TComponentsManager.New(const AOwner: TForm; const ALayoutMain: TLayout; const AImage: TControl; const ASlaveRect: TRectangle): IComponentsManager;
 begin
-  Result := TComponentsManager.Create(AOwner, ALayoutMain, ASlaveRect);
+  Result := TComponentsManager.Create(AOwner, ALayoutMain, AImage, ASlaveRect);
 end;
 
-constructor TComponentsManager.Create(const AOwner: TForm; const ALayoutMain: TLayout; const ASlaveRect: TRectangle);
+constructor TComponentsManager.Create(const AOwner: TForm; const ALayoutMain: TLayout; const AImage: TControl; const ASlaveRect: TRectangle);
 begin
   inherited Create;
   FOwner := AOwner;
   // conecta os objetos
   FLayoutMain := ALayoutMain;
   FSlaveRect := ASlaveRect;
+  FImage := AImage;
   // conecta os eventos
   FLayoutMain.OnMouseDown := Self.LayoutMainMouseDown;
   FLayoutMain.OnPaint := Self.LayoutMainPaint;
+  FExternalMouseMove := FLayoutMain.OnMouseMove;
+  // retângulo
   FSlaveRect.OnMouseDown := Self.SlaveRectMouseDown;
   FSlaveRect.OnMouseMove := Self.SlaveRectMouseMove;
   FSlaveRect.OnMouseUp := Self.SlaveRectMouseUp;
@@ -214,6 +216,7 @@ begin
     LComp.OnMouseMove := SlaveRectMouseMove;
     LComp.OnMouseUp := SlaveRectMouseUp;
     LComp.OnPaint := SlaveRectPaint;
+    FImage.AddObject(LComp);
     FLayoutMain.AddObject(LComp);
   end;
 end;
@@ -243,6 +246,7 @@ begin
     LContent.Align := TAlignLayout.None;
     FLayoutMain.RemoveObject(LComp);
     FLayoutMain.AddObject(LContent);
+    FImage.AddObject(LContent);
     LContent.SetBounds(LRect.Left, LRect.Top, LRect.Width, LRect.Height);
   end;
 end;
@@ -253,6 +257,7 @@ begin
   if Assigned(FSelected) then
   begin
     FLayoutMain.RemoveObject(TFmxObject(FSelected));
+    FImage.RemoveObject(TFmxObject(FSelected));
     FSelected.DisposeOf;
     FSelected := nil;
     FLayoutMain.Repaint;
@@ -341,6 +346,8 @@ begin
     FPosM := TRectangle(Sender).LocalToAbsolute(TPointF.Create(X, Y));
     FLayoutMain.Repaint;
   end;
+  if Assigned(FExternalMouseMove) then
+    FExternalMouseMove(Sender, Shift, TRectangle(Sender).Position.X + X, TRectangle(Sender).Position.Y + Y);
 end;
 
 procedure TComponentsManager.SlaveRectMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);

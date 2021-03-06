@@ -24,6 +24,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
     procedure FormDestroy(Sender: TObject);
+    procedure LayoutMainMouseWheel(Sender: TObject; Shift: TShiftState;
+      WheelDelta: Integer; var Handled: Boolean);
   private
     FComponentsManager: IComponentsManager;
     FMagnifierGlass: IMagnifierGlassManager;
@@ -71,11 +73,11 @@ end;
 procedure TFormScreenshot.FormCreate(Sender: TObject);
 begin
   TScreenShot.New(ImageScreenshot.Bitmap).Execute;
-  FComponentsManager := TComponentsManager.New(Self, LayoutMain, SlaveRect);
+  FMagnifierGlass := TMagnifierGlassManager.New(LayoutMain, ImageScreenshot);
+  FComponentsManager := TComponentsManager.New(Self, LayoutMain, ImageScreenshot, SlaveRect);
   FActiveMoveControls := FComponentsManager.IsActivated;
   Self.Top := 0;
   Self.Left := 0;
-  FMagnifierGlass := TMagnifierGlassManager.New(LayoutMain, ImageScreenshot).SetVisible(True);
 end;
 
 procedure TFormScreenshot.FormDestroy(Sender: TObject);
@@ -91,6 +93,15 @@ begin
   begin
     FComponentsManager.DeleteObject;
   end;
+end;
+
+procedure TFormScreenshot.LayoutMainMouseWheel(Sender: TObject;
+  Shift: TShiftState; WheelDelta: Integer; var Handled: Boolean);
+begin
+  if WheelDelta < 0 then
+    FMagnifierGlass.DecrementZoom
+  else
+    FMagnifierGlass.IncrementZoom;
 end;
 
 procedure TFormScreenshot.SetActiveMoveControls(const Value: Boolean);

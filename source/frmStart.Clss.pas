@@ -33,11 +33,14 @@ type
     PanelComponents: TPanel;
     ButtonCreateRect: TRectangle;
     Rectangle1: TRectangle;
+    Rectangle2: TRectangle;
     procedure ButtonStartClick(Sender: TObject);
     procedure ButtonTravarClick(Sender: TObject);
     procedure ButtonCreateRectClick(Sender: TObject);
     procedure Rectangle1Click(Sender: TObject);
+    procedure Rectangle2Click(Sender: TObject);
   private
+    FActiveLoupe: Boolean;
     FFormScreenshot: TFormScreenshot;
   public
   end;
@@ -71,7 +74,6 @@ begin
     try
       FFormScreenshot := TFormScreenshot.Create(nil);
       FFormScreenshot.Show;
-      FFormScreenshot.ActivateLoupe(True);
       ButtonStart.Text := 'Terminar';
     finally
       Self.Visible := True;
@@ -79,7 +81,6 @@ begin
   end
   else
   begin
-    FFormScreenshot.ActivateLoupe(False);
     FreeAndNil(FFormScreenshot);
     ButtonStart.Text := 'Iniciar';
   end;
@@ -103,6 +104,15 @@ begin
     Exit;
 
   FFormScreenshot.ToastMessageShow('Aqui está a mensagem.');
+end;
+
+procedure TFormStart.Rectangle2Click(Sender: TObject);
+begin
+  if not Assigned(FFormScreenshot) then
+    Exit;
+
+  FActiveLoupe := not FActiveLoupe;
+  FFormScreenshot.ActivateLoupe(FActiveLoupe);
 end;
 
 end.

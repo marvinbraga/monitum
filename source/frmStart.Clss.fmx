@@ -90,6 +90,16 @@ object FormStart: TFormStart
           Size.PlatformDefault = False
           OnClick = Rectangle1Click
         end
+        object Rectangle2: TRectangle
+          Align = Top
+          Margins.Top = 4.000000000000000000
+          Position.X = 4.000000000000000000
+          Position.Y = 54.000000000000000000
+          Size.Width = 80.000000000000000000
+          Size.Height = 21.000000000000000000
+          Size.PlatformDefault = False
+          OnClick = Rectangle2Click
+        end
       end
     end
   end

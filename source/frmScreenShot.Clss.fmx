@@ -31,6 +31,7 @@ object FormScreenshot: TFormScreenshot
     Size.Height = 480.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
+    OnMouseWheel = LayoutMainMouseWheel
     object SlaveRect: TRectangle
       Fill.Color = claNull
       Position.X = 16.000000000000000000
