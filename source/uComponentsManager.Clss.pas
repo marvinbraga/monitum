@@ -1,7 +1,12 @@
 unit uComponentsManager.Clss;
-
-// Monitum Projet, 2021.
-// Marcus Vinicius Braga, all rights reserved.
+{
+   Monitum Project, 2021.
+   Marcus Vinicius Braga, mvbraga@gmail.com.
+   https://github.com/marvinbraga/monitum
+   GNU General Public License v3.0
+   See all terms in:
+   https://github.com/marvinbraga/monitum/blob/main/LICENSE
+}
 
 interface
 
