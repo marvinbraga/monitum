@@ -49,7 +49,7 @@ object FormStart: TFormStart
         Text = 'Travar'
         OnClick = ButtonTravarClick
       end
-      object ButtonColor: TComboColorBox
+      object ButtonColor1: TComboColorBox
         Align = Top
         Color = x6409F009
         Margins.Top = 4.000000000000000000
@@ -59,6 +59,7 @@ object FormStart: TFormStart
         Size.Height = 22.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 2
+        OnExit = ButtonColorChange
       end
       object PanelComponents: TPanel
         Align = Client
@@ -67,39 +68,95 @@ object FormStart: TFormStart
         Margins.Top = 4.000000000000000000
         Margins.Bottom = 4.000000000000000000
         Size.Width = 88.000000000000000000
-        Size.Height = 437.000000000000000000
+        Size.Height = 333.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 3
-        object ButtonCreateRect: TRectangle
+        object ButtonColor: TRectangle
+          Align = Bottom
+          Margins.Top = 4.000000000000000000
+          Position.X = 4.000000000000000000
+          Position.Y = 312.000000000000000000
+          Size.Width = 80.000000000000000000
+          Size.Height = 21.000000000000000000
+          Size.PlatformDefault = False
+          Visible = False
+          OnClick = ButtonShowZoomClick
+        end
+        object ButtonCreateRect: TButton
           Align = Top
           Margins.Top = 4.000000000000000000
           Position.X = 4.000000000000000000
           Position.Y = 4.000000000000000000
-          Size.Width = 80.000000000000000000
-          Size.Height = 21.000000000000000000
-          Size.PlatformDefault = False
+          TabOrder = 3
+          Text = #193'rea'
           OnClick = ButtonCreateRectClick
         end
-        object Rectangle1: TRectangle
+        object ButtonShowMessage: TButton
           Align = Top
           Margins.Top = 4.000000000000000000
           Position.X = 4.000000000000000000
-          Position.Y = 29.000000000000000000
-          Size.Width = 80.000000000000000000
-          Size.Height = 21.000000000000000000
-          Size.PlatformDefault = False
-          OnClick = Rectangle1Click
+          Position.Y = 30.000000000000000000
+          TabOrder = 4
+          Text = 'Mensagem'
+          OnClick = ButtonShowMessageClick
         end
-        object Rectangle2: TRectangle
+        object ButtonShowZoom: TButton
           Align = Top
           Margins.Top = 4.000000000000000000
           Position.X = 4.000000000000000000
-          Position.Y = 54.000000000000000000
-          Size.Width = 80.000000000000000000
-          Size.Height = 21.000000000000000000
-          Size.PlatformDefault = False
-          OnClick = Rectangle2Click
+          Position.Y = 56.000000000000000000
+          TabOrder = 5
+          Text = 'Zoom'
+          OnClick = ButtonShowZoomClick
         end
+      end
+      object ButtonColor2: TComboColorBox
+        Align = Top
+        Color = x640959F0
+        Margins.Top = 4.000000000000000000
+        Position.X = 4.000000000000000000
+        Position.Y = 108.000000000000000000
+        Size.Width = 88.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 4
+        OnExit = ButtonColorChange
+      end
+      object ButtonColor3: TComboColorBox
+        Align = Top
+        Color = x64F01909
+        Margins.Top = 4.000000000000000000
+        Position.X = 4.000000000000000000
+        Position.Y = 134.000000000000000000
+        Size.Width = 88.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 5
+        OnExit = ButtonColorChange
+      end
+      object ButtonColor4: TComboColorBox
+        Align = Top
+        Color = x64D0F009
+        Margins.Top = 4.000000000000000000
+        Position.X = 4.000000000000000000
+        Position.Y = 82.000000000000000000
+        Size.Width = 88.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 6
+        OnExit = ButtonColorChange
+      end
+      object ButtonColor5: TComboColorBox
+        Align = Top
+        Color = x64F08809
+        Margins.Top = 4.000000000000000000
+        Position.X = 4.000000000000000000
+        Position.Y = 160.000000000000000000
+        Size.Width = 88.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 7
+        OnExit = ButtonColorChange
       end
     end
   end

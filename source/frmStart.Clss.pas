@@ -29,16 +29,22 @@ type
     ButtonTravar: TButton;
     RectTools: TRectangle;
     LayoutMain: TLayout;
-    ButtonColor: TComboColorBox;
+    ButtonColor1: TComboColorBox;
     PanelComponents: TPanel;
-    ButtonCreateRect: TRectangle;
-    Rectangle1: TRectangle;
-    Rectangle2: TRectangle;
+    ButtonColor2: TComboColorBox;
+    ButtonColor3: TComboColorBox;
+    ButtonColor4: TComboColorBox;
+    ButtonColor5: TComboColorBox;
+    ButtonColor: TRectangle;
+    ButtonCreateRect: TButton;
+    ButtonShowMessage: TButton;
+    ButtonShowZoom: TButton;
     procedure ButtonStartClick(Sender: TObject);
     procedure ButtonTravarClick(Sender: TObject);
     procedure ButtonCreateRectClick(Sender: TObject);
-    procedure Rectangle1Click(Sender: TObject);
-    procedure Rectangle2Click(Sender: TObject);
+    procedure ButtonShowMessageClick(Sender: TObject);
+    procedure ButtonShowZoomClick(Sender: TObject);
+    procedure ButtonColorChange(Sender: TObject);
   private
     FActiveLoupe: Boolean;
     FFormScreenshot: TFormScreenshot;
@@ -55,6 +61,11 @@ uses
 
 {$R *.fmx}
 
+procedure TFormStart.ButtonColorChange(Sender: TObject);
+begin
+  ButtonColor.Fill.Color := TComboColorBox(Sender).Color;
+end;
+
 procedure TFormStart.ButtonCreateRectClick(Sender: TObject);
 begin
   if not Assigned(FFormScreenshot) then
@@ -62,7 +73,7 @@ begin
 
   FFormScreenshot.CreateRectangle(
     TShape.New(
-      TFill.New(ButtonColor.Color),
+      TFill.New(ButtonColor.Fill.Color),
       TStroke.New(TAlphaColors.Black, TStrokeDash.Solid, TBrushKind.None, 1)));
 end;
 
@@ -72,6 +83,7 @@ begin
   begin
     Self.Visible := False;
     try
+      ButtonColor.Fill.Color := ButtonColor1.Color;
       FFormScreenshot := TFormScreenshot.Create(nil);
       FFormScreenshot.Show;
       ButtonStart.Text := 'Terminar';
@@ -98,7 +110,7 @@ begin
     ButtonTravar.Text := 'Destravar';
 end;
 
-procedure TFormStart.Rectangle1Click(Sender: TObject);
+procedure TFormStart.ButtonShowMessageClick(Sender: TObject);
 begin
   if not Assigned(FFormScreenshot) then
     Exit;
@@ -106,7 +118,7 @@ begin
   FFormScreenshot.ToastMessageShow('Aqui está a mensagem.');
 end;
 
-procedure TFormStart.Rectangle2Click(Sender: TObject);
+procedure TFormStart.ButtonShowZoomClick(Sender: TObject);
 begin
   if not Assigned(FFormScreenshot) then
     Exit;
