@@ -109,14 +109,14 @@ object FormStart: TFormStart
           Text = 'Zoom'
           OnClick = ButtonShowZoomClick
         end
-        object ButtonTest: TButton
+        object ButtonMessageBox: TButton
           Align = Top
           Margins.Top = 4.000000000000000000
           Position.X = 4.000000000000000000
           Position.Y = 82.000000000000000000
           TabOrder = 4
           Text = 'Text'
-          OnClick = ButtonTestClick
+          OnClick = ButtonMessageBoxClick
         end
       end
       object ButtonColor2: TComboColorBox

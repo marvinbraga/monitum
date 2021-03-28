@@ -28,7 +28,8 @@ uses
   uMagnifierGlass in '..\source\uMagnifierGlass.pas',
   frmShowMessageInternal.Clss in '..\source\frmShowMessageInternal.Clss.pas' {FormMessageInternal},
   uShowMessage in '..\source\uShowMessage.pas',
-  frmShowMessage.Clss in '..\source\frmShowMessage.Clss.pas' {FormBlock};
+  frmShowMessage.Clss in '..\source\frmShowMessage.Clss.pas' {FormBlock},
+  frmSetupMessage.Clss in '..\source\frmSetupMessage.Clss.pas' {FormSetupMessage};
 
 {$R *.res}
 

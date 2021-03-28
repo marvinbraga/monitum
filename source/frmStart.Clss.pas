@@ -11,6 +11,8 @@ unit frmStart.Clss;
 interface
 
 uses
+  frmSetupMessage.Clss,
+  frmScreenShot.Clss,
   System.SysUtils,
   System.Types,
   System.UITypes,
@@ -23,7 +25,6 @@ uses
   FMX.Dialogs,
   FMX.Controls.Presentation,
   FMX.StdCtrls,
-  frmScreenShot.Clss,
   FMX.Layouts,
   FMX.Objects,
   FMX.Colors;
@@ -44,17 +45,19 @@ type
     ButtonCreateRect: TButton;
     ButtonShowMessage: TButton;
     ButtonShowZoom: TButton;
-    ButtonTest: TButton;
+    ButtonMessageBox: TButton;
     procedure ButtonStartClick(Sender: TObject);
     procedure ButtonTravarClick(Sender: TObject);
     procedure ButtonCreateRectClick(Sender: TObject);
     procedure ButtonShowMessageClick(Sender: TObject);
     procedure ButtonShowZoomClick(Sender: TObject);
     procedure ButtonColorChange(Sender: TObject);
-    procedure ButtonTestClick(Sender: TObject);
+    procedure ButtonMessageBoxClick(Sender: TObject);
   private
     FActiveLoupe: Boolean;
     FFormScreenshot: TFormScreenshot;
+    FMessageData: IMessageData;
+    procedure StartView;
   public
   end;
 
@@ -64,7 +67,9 @@ var
 implementation
 
 uses
-  uComponentsTypes.Clss, frmShowMessage.Clss, uShowMessage;
+  uComponentsTypes.Clss,
+  frmShowMessage.Clss,
+  uShowMessage;
 
 {$R *.fmx}
 
@@ -78,13 +83,43 @@ begin
   if not Assigned(FFormScreenshot) then
     Exit;
 
-  FFormScreenshot.CreateRectangle(
-    TShape.New(
-      TFill.New(ButtonColor.Fill.Color),
-      TStroke.New(TAlphaColors.Black, TStrokeDash.Solid, TBrushKind.None, 1)));
+  FFormScreenshot.CreateRectangle(TShape.New(TFill.New(ButtonColor.Fill.Color), TStroke.New(TAlphaColors.Black, TStrokeDash.Solid, TBrushKind.None, 1)));
 end;
 
 procedure TFormStart.ButtonStartClick(Sender: TObject);
+begin
+  Self.StartView;
+end;
+
+procedure TFormStart.ButtonMessageBoxClick(Sender: TObject);
+var
+  LForm: ISetupMessage;
+  LPosition: TPoint;
+
+  function GetTop: Integer;
+  begin
+    Result := Self.Top + Round(PanelComponents.Position.Y) + Round(ButtonMessageBox.Position.Y) + 100;
+  end;
+
+  function GetLeft: Integer;
+  begin
+    Result := Self.Left + Round(Self.Width) + 25;
+  end;
+
+begin
+  if not Assigned(FMessageData) then
+    FMessageData := TMessageData.New(EmptyStr, EmptyStr);
+
+  LPosition.Y := GetTop;
+  LPosition.X := GetLeft;
+  LForm := TFormSetupMessage.New(Self, LPosition, FMessageData);
+  if TFormSetupMessage(LForm).ShowModal = mrOk then
+  begin
+    TMessageBox.Show(FMessageData.Title, FMessageData.Text, FMessageData.MessageSize);
+  end;
+end;
+
+procedure TFormStart.StartView;
 begin
   if not Assigned(FFormScreenshot) then
   begin
@@ -103,11 +138,6 @@ begin
     FreeAndNil(FFormScreenshot);
     ButtonStart.Text := 'Iniciar';
   end;
-end;
-
-procedure TFormStart.ButtonTestClick(Sender: TObject);
-begin
-  TMessageBox.Show('Teste de Mensagem', 'Este é um teste de apresentação de mensagem.', TMessageSize.Medium);
 end;
 
 procedure TFormStart.ButtonTravarClick(Sender: TObject);
@@ -136,6 +166,11 @@ begin
     Exit;
 
   FActiveLoupe := not FActiveLoupe;
+  if FActiveLoupe then
+  begin
+    FreeAndNil(FFormScreenshot);
+    Self.StartView;
+  end;
   FFormScreenshot.ActivateLoupe(FActiveLoupe);
 end;
 

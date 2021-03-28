@@ -1,0 +1,133 @@
+object FormSetupMessage: TFormSetupMessage
+  Left = 0
+  Top = 0
+  BorderStyle = Single
+  Caption = 'Configura'#231#227'o de Mensagem'
+  ClientHeight = 219
+  ClientWidth = 469
+  Position = Designed
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object LayoutMain: TLayout
+    Align = Contents
+    Size.Width = 469.000000000000000000
+    Size.Height = 219.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object LayoutButtons: TLayout
+      Align = Bottom
+      Padding.Left = 4.000000000000000000
+      Padding.Top = 4.000000000000000000
+      Padding.Right = 4.000000000000000000
+      Padding.Bottom = 4.000000000000000000
+      Margins.Left = 8.000000000000000000
+      Margins.Top = 8.000000000000000000
+      Margins.Right = 8.000000000000000000
+      Margins.Bottom = 8.000000000000000000
+      Position.X = 8.000000000000000000
+      Position.Y = 181.000000000000000000
+      Size.Width = 453.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object ButtonOk: TButton
+        Align = Right
+        ModalResult = 1
+        Margins.Left = 4.000000000000000000
+        Position.X = 369.000000000000000000
+        Position.Y = 4.000000000000000000
+        Size.Width = 80.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = 'OK'
+        OnClick = ButtonOkClick
+      end
+      object ButtonCancel: TButton
+        Align = Right
+        ModalResult = 2
+        Position.X = 285.000000000000000000
+        Position.Y = 4.000000000000000000
+        Size.Width = 80.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'Cancelar'
+      end
+    end
+    object LayoutControls: TLayout
+      Align = Client
+      Margins.Left = 8.000000000000000000
+      Margins.Top = 8.000000000000000000
+      Margins.Right = 8.000000000000000000
+      Size.Width = 453.000000000000000000
+      Size.Height = 165.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object EditTitle: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Top
+        TabOrder = 0
+        Position.Y = 17.000000000000000000
+        Margins.Bottom = 4.000000000000000000
+        Size.Width = 453.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+        TextPrompt = 'Escreva aqui o t'#237'tulo da mensagem...'
+      end
+      object EditMessage: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Top
+        TabOrder = 1
+        Position.Y = 60.000000000000000000
+        Margins.Bottom = 4.000000000000000000
+        Size.Width = 453.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+        TextPrompt = 'Escreva aqui sua mensagem...'
+      end
+      object ComboBoxMessageSize: TComboBox
+        Align = Top
+        Items.Strings = (
+          'Pequeno'
+          'M'#233'dio'
+          'Grande')
+        ItemIndex = 0
+        Margins.Bottom = 4.000000000000000000
+        Position.Y = 103.000000000000000000
+        Size.Width = 453.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+      end
+      object LabelTitle: TLabel
+        Align = Top
+        Size.Width = 453.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'T'#237'tulo'
+        TabOrder = 5
+      end
+      object LabelMessage: TLabel
+        Align = Top
+        Position.Y = 43.000000000000000000
+        Size.Width = 453.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Mensagem'
+        TabOrder = 4
+      end
+      object LabelMessageSize: TLabel
+        Align = Top
+        Position.Y = 86.000000000000000000
+        Size.Width = 453.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Tamanho do Di'#225'logo da Mensagem'
+        TabOrder = 3
+      end
+    end
+  end
+end
