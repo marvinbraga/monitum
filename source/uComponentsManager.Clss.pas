@@ -210,8 +210,8 @@ begin
     LContent := TContent(FLayoutMain.Children[LIndex]);
     LRect := LContent.AbsoluteRect;
     LRect.Offset(0, 0 - FLayoutMain.Position.Y);
-    LRect.Width := FSlaveRect.Width;
-    LRect.Height := FSlaveRect.Height;
+    //LRect.Width := FSlaveRect.Width;
+    //LRect.Height := FSlaveRect.Height;
     LComp.SetBounds(LRect.Left, LRect.Top, LRect.Width, LRect.Height);
     LContent.Position.Point := TPointF.Zero;
     LContent.HitTest := False;
@@ -252,8 +252,8 @@ begin
     LContent.Locked := False;
     LContent.Align := TAlignLayout.None;
     FLayoutMain.RemoveObject(LComp);
-    FLayoutMain.AddObject(LContent);
     FImage.AddObject(LContent);
+    FLayoutMain.AddObject(LContent);
     LContent.SetBounds(LRect.Left, LRect.Top, LRect.Width, LRect.Height);
   end;
 end;

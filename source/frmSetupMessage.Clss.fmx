@@ -1,6 +1,7 @@
 object FormSetupMessage: TFormSetupMessage
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu]
   BorderStyle = Single
   Caption = 'Configura'#231#227'o de Mensagem'
   ClientHeight = 219
