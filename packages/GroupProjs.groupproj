@@ -6,7 +6,7 @@
         <Projects Include="Monitum.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="C:\Users\mvbraga\Documents\Embarcadero\Studio\Projects\Project2.dproj">
+        <Projects Include="E:\_TEMP\.Videos 2020\Exceções - O que mais você gostaria de saber\.code\ExcecoesAdequadas.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -26,23 +26,23 @@
     <Target Name="Monitum:Make">
         <MSBuild Projects="Monitum.dproj" Targets="Make"/>
     </Target>
-    <Target Name="Project2">
-        <MSBuild Projects="C:\Users\mvbraga\Documents\Embarcadero\Studio\Projects\Project2.dproj"/>
+    <Target Name="ExcecoesAdequadas">
+        <MSBuild Projects="E:\_TEMP\.Videos 2020\Exceções - O que mais você gostaria de saber\.code\ExcecoesAdequadas.dproj"/>
     </Target>
-    <Target Name="Project2:Clean">
-        <MSBuild Projects="C:\Users\mvbraga\Documents\Embarcadero\Studio\Projects\Project2.dproj" Targets="Clean"/>
+    <Target Name="ExcecoesAdequadas:Clean">
+        <MSBuild Projects="E:\_TEMP\.Videos 2020\Exceções - O que mais você gostaria de saber\.code\ExcecoesAdequadas.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Project2:Make">
-        <MSBuild Projects="C:\Users\mvbraga\Documents\Embarcadero\Studio\Projects\Project2.dproj" Targets="Make"/>
+    <Target Name="ExcecoesAdequadas:Make">
+        <MSBuild Projects="E:\_TEMP\.Videos 2020\Exceções - O que mais você gostaria de saber\.code\ExcecoesAdequadas.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="Monitum;Project2"/>
+        <CallTarget Targets="Monitum;ExcecoesAdequadas"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Monitum:Clean;Project2:Clean"/>
+        <CallTarget Targets="Monitum:Clean;ExcecoesAdequadas:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Monitum:Make;Project2:Make"/>
+        <CallTarget Targets="Monitum:Make;ExcecoesAdequadas:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

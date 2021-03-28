@@ -159,6 +159,15 @@
         <DCCReference Include="..\source\Marvin.UI.ToastMessage.pas"/>
         <DCCReference Include="..\source\uMagnifierGlass.Clss.pas"/>
         <DCCReference Include="..\source\uMagnifierGlass.pas"/>
+        <DCCReference Include="..\source\frmShowMessageInternal.Clss.pas">
+            <Form>FormMessageInternal</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="..\source\uShowMessage.pas"/>
+        <DCCReference Include="..\source\frmShowMessage.Clss.pas">
+            <Form>FormBlock</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

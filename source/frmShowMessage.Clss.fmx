@@ -1,0 +1,49 @@
+object FormBlock: TFormBlock
+  Left = 0
+  Top = 0
+  BorderStyle = None
+  Caption = 'BlockedForm'
+  ClientHeight = 381
+  ClientWidth = 725
+  Fill.Color = x00FFFFFF
+  Fill.Kind = Solid
+  Transparency = True
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  FullScreen = True
+  OnClose = FormClose
+  OnDestroy = FormDestroy
+  OnKeyUp = FormKeyUp
+  OnMouseDown = FormMouseDown
+  DesignerMasterStyle = 0
+  object LayoutMain: TLayout
+    Align = Contents
+    Size.Width = 725.000000000000000000
+    Size.Height = 381.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object RectangleMain: TRectangle
+      Align = Client
+      Fill.Color = x96000000
+      HitTest = False
+      Size.Width = 725.000000000000000000
+      Size.Height = 381.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Kind = None
+      object FloatAnimationRectMain: TFloatAnimation
+        Enabled = True
+        Duration = 0.500000000000000000
+        PropertyName = 'Opacity'
+        StartValue = 0.000000000000000000
+        StopValue = 1.000000000000000000
+      end
+    end
+  end
+  object TimerClose: TTimer
+    Interval = 10000
+    OnTimer = TimerCloseTimer
+    Left = 32
+    Top = 16
+  end
+end

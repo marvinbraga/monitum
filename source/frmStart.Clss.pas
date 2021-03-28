@@ -44,12 +44,14 @@ type
     ButtonCreateRect: TButton;
     ButtonShowMessage: TButton;
     ButtonShowZoom: TButton;
+    ButtonTest: TButton;
     procedure ButtonStartClick(Sender: TObject);
     procedure ButtonTravarClick(Sender: TObject);
     procedure ButtonCreateRectClick(Sender: TObject);
     procedure ButtonShowMessageClick(Sender: TObject);
     procedure ButtonShowZoomClick(Sender: TObject);
     procedure ButtonColorChange(Sender: TObject);
+    procedure ButtonTestClick(Sender: TObject);
   private
     FActiveLoupe: Boolean;
     FFormScreenshot: TFormScreenshot;
@@ -62,7 +64,7 @@ var
 implementation
 
 uses
-  uComponentsTypes.Clss;
+  uComponentsTypes.Clss, frmShowMessage.Clss, uShowMessage;
 
 {$R *.fmx}
 
@@ -101,6 +103,11 @@ begin
     FreeAndNil(FFormScreenshot);
     ButtonStart.Text := 'Iniciar';
   end;
+end;
+
+procedure TFormStart.ButtonTestClick(Sender: TObject);
+begin
+  TMessageBox.Show('Teste de Mensagem', 'Este é um teste de apresentação de mensagem.', TMessageSize.Medium);
 end;
 
 procedure TFormStart.ButtonTravarClick(Sender: TObject);

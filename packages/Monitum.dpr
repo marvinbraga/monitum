@@ -25,7 +25,10 @@ uses
   Marvin.UI.ToastMessage.Frame in '..\source\Marvin.UI.ToastMessage.Frame.pas' {FrameToast: TFrame},
   Marvin.UI.ToastMessage in '..\source\Marvin.UI.ToastMessage.pas',
   uMagnifierGlass.Clss in '..\source\uMagnifierGlass.Clss.pas',
-  uMagnifierGlass in '..\source\uMagnifierGlass.pas';
+  uMagnifierGlass in '..\source\uMagnifierGlass.pas',
+  frmShowMessageInternal.Clss in '..\source\frmShowMessageInternal.Clss.pas' {FormMessageInternal},
+  uShowMessage in '..\source\uShowMessage.pas',
+  frmShowMessage.Clss in '..\source\frmShowMessage.Clss.pas' {FormBlock};
 
 {$R *.res}
 

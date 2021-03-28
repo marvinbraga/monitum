@@ -1,0 +1,114 @@
+object FormMessageInternal: TFormMessageInternal
+  Left = 0
+  Top = 0
+  BorderStyle = None
+  Caption = 'Mensagem'
+  ClientHeight = 240
+  ClientWidth = 433
+  Position = ScreenCenter
+  Transparency = True
+  FormStyle = StayOnTop
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  OnKeyUp = FormKeyUp
+  DesignerMasterStyle = 0
+  object LayoutMain: TLayout
+    Align = Contents
+    Margins.Left = 20.000000000000000000
+    Margins.Top = 20.000000000000000000
+    Margins.Right = 20.000000000000000000
+    Margins.Bottom = 20.000000000000000000
+    Size.Width = 393.000000000000000000
+    Size.Height = 200.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object RectangleMain: TRectangle
+      Align = Client
+      Fill.Color = xFF5A5A5A
+      Padding.Left = 8.000000000000000000
+      Padding.Top = 8.000000000000000000
+      Padding.Right = 8.000000000000000000
+      Padding.Bottom = 8.000000000000000000
+      Size.Width = 393.000000000000000000
+      Size.Height = 200.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = claWhite
+      Stroke.Thickness = 5.000000000000000000
+      XRadius = 5.000000000000000000
+      YRadius = 5.000000000000000000
+      OnClick = RectangleMainClick
+      OnDblClick = RectangleMainDblClick
+      object LayoutTitle: TLayout
+        Align = Top
+        Position.X = 8.000000000000000000
+        Position.Y = 8.000000000000000000
+        Size.Width = 377.000000000000000000
+        Size.Height = 38.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object TextTitle: TText
+          Align = Client
+          HitTest = False
+          Size.Width = 377.000000000000000000
+          Size.Height = 38.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'T'#237'tulo da Mensagem'
+          TextSettings.Font.Family = 'Montserrat'
+          TextSettings.Font.Size = 20.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.FontColor = claWhite
+          object ShadowTitle: TShadowEffect
+            Distance = 2.000000000000000000
+            Direction = 90.000000000000000000
+            Softness = 0.300000011920929000
+            Opacity = 0.600000023841857900
+            ShadowColor = claBlack
+          end
+        end
+      end
+      object LayoutMessage: TLayout
+        Align = Client
+        Padding.Left = 8.000000000000000000
+        Padding.Top = 4.000000000000000000
+        Padding.Right = 8.000000000000000000
+        Padding.Bottom = 4.000000000000000000
+        Size.Width = 377.000000000000000000
+        Size.Height = 146.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        object TextMessage: TText
+          Align = Client
+          HitTest = False
+          Size.Width = 361.000000000000000000
+          Size.Height = 138.000000000000000000
+          Size.PlatformDefault = False
+          Text = 
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do ' +
+            'eiusmod tempor incididunt ut labore et dolore magna aliqua. '#13#10'Ut' +
+            ' ornare lectus sit amet est placerat. Sit amet cursus sit amet d' +
+            'ictum.'
+          TextSettings.Font.Family = 'Montserrat'
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.FontColor = claWhite
+          TextSettings.VertAlign = Leading
+        end
+      end
+      object FloatAnimationRectMain: TFloatAnimation
+        Enabled = True
+        Duration = 0.500000000000000000
+        PropertyName = 'Opacity'
+        StartValue = 0.000000000000000000
+        StopValue = 1.000000000000000000
+      end
+    end
+    object ShadowPanel: TShadowEffect
+      Distance = 12.000000000000000000
+      Direction = 90.000000000000000000
+      Softness = 0.800000011920929000
+      Opacity = 0.800000011920929000
+      ShadowColor = claBlack
+    end
+  end
+end
