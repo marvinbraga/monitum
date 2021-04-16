@@ -26,7 +26,7 @@ uses
   FMX.StdCtrls,
   FMX.Layouts,
   FMX.Objects,
-  FMX.Ani;
+  FMX.Ani, FMX.Effects;
 
 type
   TFrameToast = class(TFrame, IToastMessage)
@@ -37,6 +37,9 @@ type
     TextAcao: TText;
     FloatAnimationAcao: TFloatAnimation;
     FloatAnimationRect: TFloatAnimation;
+    ShadowText: TShadowEffect;
+    procedure FloatAnimationRectFinish(Sender: TObject);
+    procedure TextAcaoClick(Sender: TObject);
   private
     FOwner: TComponent;
   protected
@@ -81,6 +84,11 @@ begin
   inherited;
 end;
 
+procedure TFrameToast.FloatAnimationRectFinish(Sender: TObject);
+begin
+  ShadowText.UpdateParentEffects;
+end;
+
 function TFrameToast.ShowFrame: IToastMessage;
 begin
   Result := Self;
@@ -95,6 +103,11 @@ begin
   FloatAnimationRect.Start;
   FloatAnimationAcao.Start;
   FloatAnimationMensagem.Start;
+end;
+
+procedure TFrameToast.TextAcaoClick(Sender: TObject);
+begin
+  Self.HideFrame;
 end;
 
 function TFrameToast.HideFrame: IToastMessage;

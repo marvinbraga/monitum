@@ -58,6 +58,7 @@ type
     FFormScreenshot: TFormScreenshot;
     FMessageData: IMessageData;
     procedure StartView;
+    function GetMessagePosition(const AControl: TControl): TPoint;
   public
   end;
 
@@ -94,25 +95,11 @@ end;
 procedure TFormStart.ButtonMessageBoxClick(Sender: TObject);
 var
   LForm: ISetupMessage;
-  LPosition: TPoint;
-
-  function GetTop: Integer;
-  begin
-    Result := Self.Top + Round(PanelComponents.Position.Y) + Round(ButtonMessageBox.Position.Y) + 100;
-  end;
-
-  function GetLeft: Integer;
-  begin
-    Result := Self.Left + Round(Self.Width) + 25;
-  end;
-
 begin
   if not Assigned(FMessageData) then
     FMessageData := TMessageData.New(EmptyStr, EmptyStr);
 
-  LPosition.Y := GetTop;
-  LPosition.X := GetLeft;
-  LForm := TFormSetupMessage.New(Self, LPosition, FMessageData);
+  LForm := TFormSetupMessage.New(Self, Self.GetMessagePosition(ButtonMessageBox), FMessageData);
   if TFormSetupMessage(LForm).ShowModal = mrOk then
   begin
     TMessageBox.Show(FMessageData.Title, FMessageData.Text, FMessageData.MessageSize);
@@ -152,13 +139,30 @@ begin
     ButtonTravar.Text := 'Destravar';
 end;
 
+function TFormStart.GetMessagePosition(const AControl: TControl): TPoint;
+begin
+  Result.Y := Self.Top + Round(PanelComponents.Position.Y) + Round(AControl.Position.Y) + 100;
+  Result.X := Self.Left + Round(Self.Width) + 25;
+end;
+
 procedure TFormStart.ButtonShowMessageClick(Sender: TObject);
+var
+  LForm: ISetupMessage;
 begin
   if not Assigned(FFormScreenshot) then
     Exit;
 
-  FFormScreenshot.ToastMessageShow('Aqui está a mensagem.');
+  if not Assigned(FMessageData) then
+    FMessageData := TMessageData.New(EmptyStr, EmptyStr);
+
+  LForm := TFormSetupMessage.New(Self, Self.GetMessagePosition(ButtonShowMessage), FMessageData);
+  if TFormSetupMessage(LForm).ShowModal = mrOk then
+  begin
+    FFormScreenshot.ToastMessageShow(FMessageData.Text, FMessageData.Title);
+  end;
 end;
+
+
 
 procedure TFormStart.ButtonShowZoomClick(Sender: TObject);
 begin

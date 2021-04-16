@@ -1,11 +1,11 @@
 object FrameToast: TFrameToast
   Size.Width = 470.000000000000000000
-  Size.Height = 54.000000000000000000
+  Size.Height = 354.000000000000000000
   Size.PlatformDefault = False
   object Layout: TLayout
     Align = Contents
     Size.Width = 470.000000000000000000
-    Size.Height = 54.000000000000000000
+    Size.Height = 354.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     object RectToast: TRoundRect
@@ -15,20 +15,22 @@ object FrameToast: TFrameToast
       HitTest = False
       Padding.Left = 24.000000000000000000
       Padding.Right = 5.000000000000000000
+      Opacity = 0.899999976158142100
       Size.Width = 470.000000000000000000
-      Size.Height = 54.000000000000000000
+      Size.Height = 354.000000000000000000
       Size.PlatformDefault = False
       Stroke.Kind = None
       object TextAcao: TText
         Align = Right
         Position.X = 379.000000000000000000
         Size.Width = 86.000000000000000000
-        Size.Height = 54.000000000000000000
+        Size.Height = 354.000000000000000000
         Size.PlatformDefault = False
-        Text = 'A'#199#195'O'
+        Text = 'OK'
         TextSettings.Font.Family = 'Roboto'
         TextSettings.Font.Size = 14.000000000000000000
         TextSettings.FontColor = xFFEEFF41
+        OnClick = TextAcaoClick
         object FloatAnimationAcao: TFloatAnimation
           Duration = 1.000000000000000000
           PropertyName = 'Opacity'
@@ -40,21 +42,28 @@ object FrameToast: TFrameToast
         Align = Client
         HitTest = False
         Size.Width = 355.000000000000000000
-        Size.Height = 54.000000000000000000
+        Size.Height = 354.000000000000000000
         Size.PlatformDefault = False
         Text = 'Aqui vai o texto da mensagem tipo Toast.'
-        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.Font.Size = 25.000000000000000000
         TextSettings.FontColor = claWhite
-        TextSettings.HorzAlign = Leading
         object FloatAnimationMensagem: TFloatAnimation
           Duration = 1.000000000000000000
           PropertyName = 'Opacity'
           StartValue = 0.000000000000000000
           StopValue = 1.000000000000000000
         end
+        object ShadowText: TShadowEffect
+          Distance = 3.000000000000000000
+          Direction = 45.000000000000000000
+          Softness = 0.300000011920929000
+          Opacity = 0.600000023841857900
+          ShadowColor = claBlack
+        end
       end
       object FloatAnimationRect: TFloatAnimation
         Duration = 0.500000000000000000
+        OnFinish = FloatAnimationRectFinish
         PropertyName = 'Position.Y'
         StartValue = 0.000000000000000000
         StopValue = 0.000000000000000000

@@ -35,6 +35,7 @@ object FormSetupMessage: TFormSetupMessage
       TabOrder = 1
       object ButtonOk: TButton
         Align = Right
+        Default = True
         ModalResult = 1
         Margins.Left = 4.000000000000000000
         Position.X = 369.000000000000000000

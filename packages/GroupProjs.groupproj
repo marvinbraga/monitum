@@ -1,12 +1,9 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{5D272A7A-75F7-4FBA-8212-A17007CCFB85}</ProjectGuid>
+        <ProjectGuid>{3CA81FB5-D784-49CF-8703-168F783E37E5}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
         <Projects Include="Monitum.dproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="E:\_TEMP\.Videos 2020\Exceções - O que mais você gostaria de saber\.code\ExcecoesAdequadas.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -26,23 +23,14 @@
     <Target Name="Monitum:Make">
         <MSBuild Projects="Monitum.dproj" Targets="Make"/>
     </Target>
-    <Target Name="ExcecoesAdequadas">
-        <MSBuild Projects="E:\_TEMP\.Videos 2020\Exceções - O que mais você gostaria de saber\.code\ExcecoesAdequadas.dproj"/>
-    </Target>
-    <Target Name="ExcecoesAdequadas:Clean">
-        <MSBuild Projects="E:\_TEMP\.Videos 2020\Exceções - O que mais você gostaria de saber\.code\ExcecoesAdequadas.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="ExcecoesAdequadas:Make">
-        <MSBuild Projects="E:\_TEMP\.Videos 2020\Exceções - O que mais você gostaria de saber\.code\ExcecoesAdequadas.dproj" Targets="Make"/>
-    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Monitum;ExcecoesAdequadas"/>
+        <CallTarget Targets="Monitum"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Monitum:Clean;ExcecoesAdequadas:Clean"/>
+        <CallTarget Targets="Monitum:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Monitum:Make;ExcecoesAdequadas:Make"/>
+        <CallTarget Targets="Monitum:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
