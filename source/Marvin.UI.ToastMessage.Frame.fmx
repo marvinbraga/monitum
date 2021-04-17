@@ -27,7 +27,7 @@ object FrameToast: TFrameToast
         Size.Height = 354.000000000000000000
         Size.PlatformDefault = False
         Text = 'OK'
-        TextSettings.Font.Family = 'Roboto'
+        TextSettings.Font.Family = 'Montserrat'
         TextSettings.Font.Size = 14.000000000000000000
         TextSettings.FontColor = xFFEEFF41
         OnClick = TextAcaoClick
@@ -45,7 +45,9 @@ object FrameToast: TFrameToast
         Size.Height = 354.000000000000000000
         Size.PlatformDefault = False
         Text = 'Aqui vai o texto da mensagem tipo Toast.'
-        TextSettings.Font.Size = 25.000000000000000000
+        TextSettings.Font.Family = 'Montserrat'
+        TextSettings.Font.Size = 26.000000000000000000
+        TextSettings.Font.StyleExt = {00060000000000000004000000}
         TextSettings.FontColor = claWhite
         object FloatAnimationMensagem: TFloatAnimation
           Duration = 1.000000000000000000
